@@ -2,7 +2,12 @@
   "name": "@chapterhouse/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev:frontend": "yarn nx dev frontend -- --port 4354",
+    "start:frontend": "yarn nx start frontend -- --port 4354",
+    "deps:backend": "source apps/backend/venv/bin/activate && cd apps/backend; pip install -r requirements.txt",
+    "dev:backend": "source apps/backend/venv/bin/activate && cd apps/backend; python server.py"
+  },
   "private": true,
   "dependencies": {
     "next": "14.2.3",
@@ -44,5 +49,6 @@
     "tslib": "^2.3.0",
     "typescript": "~5.5.2",
     "typescript-eslint": "^8.0.0"
-  }
+  },
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }

@@ -1,34 +1,94 @@
 # Chapterhouse
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+✨ Using [Nx workspace](https://nx.dev) Monorepo configuration. ✨
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/next?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `yarn nx graph` to visually explore what was created. Now, let's get you up to speed!
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/next?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Preparing dependencies
 
-## Run tasks
-
-To run the dev server for your app, use:
+Shared:
 
 ```sh
-npx nx dev frontend
+# 啟用 Yarn
+corepack enable
 ```
 
-To create a production bundle:
+For front-end (Next.js/React.js etc.):
 
 ```sh
-npx nx build frontend
+# 安裝 Node.js 這側的相依性套件
+yarn install
+```
+
+For back-end (Python 3, in virtual env):
+
+```sh
+# 安裝 Python 這側的相依性套件
+
+# 可以查看 package.json 中 scripts 的內容
+# 看看這個指令做什麼事
+yarn deps:backend
+```
+
+## Run tasks, front-end
+
+To run the dev server for front-end, use:
+
+```sh
+yarn dev:frontend
+# or
+yarn nx dev frontend
+```
+
+To create a production bundle for front-end:
+
+```sh
+yarn nx build frontend
+```
+
+## Run tasks, back-end
+
+To run the dev server for Python API back-end, use:
+
+```sh
+# 這邊把 Python server 跟 venv 啟動指令串再一起，參照 package.json -> scripts
+
+# Linux/macOS:
+yarn dev:backend
+
+# Windows PowerShell:
+.\apps\backend\venv\Activate.ps1
+cd .\apps\backend
+python server.py
+```
+
+If you only want to activate the virtual env for `backend`, run:
+
+```sh
+# Linux/macOS:
+source apps/backend/venv/bin/activate
+
+# Windows PowerShell:
+.\apps\backend\venv\Activate.ps1
 ```
 
 To see all available targets to run for a project, run:
 
 ```sh
-npx nx show project frontend
+yarn nx show project frontend
+# or
+yarn nx show project backend
 ```
 
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
 [More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+```sh
+# 
+# 重要的部分到這邊，再下去是延伸跟進階功能
+#
+```
 
 ## Add new projects
 
@@ -39,16 +99,16 @@ Use the plugin's generator to create new projects.
 To generate a new application, use:
 
 ```sh
-npx nx g @nx/next:app demo
+yarn nx g @nx/next:app demo
 ```
 
 To generate a new library, use:
 
 ```sh
-npx nx g @nx/react:lib mylib
+yarn nx g @nx/react:lib mylib
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+You can use `yarn nx list` to get a list of installed plugins. Then, run `yarn nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
 
 [Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
@@ -59,7 +119,7 @@ You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx 
 To connect to Nx Cloud, run the following command:
 
 ```sh
-npx nx connect
+yarn nx connect
 ```
 
 Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
@@ -74,7 +134,7 @@ Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/
 Use the following command to configure a CI workflow for your workspace:
 
 ```sh
-npx nx g ci-workflow
+yarn nx g ci-workflow
 ```
 
 [Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
