@@ -4,6 +4,17 @@
 
 [Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/next?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `yarn nx graph` to visually explore what was created. Now, let's get you up to speed!
 
+## Stack description
+
+`apps/frontend` 前端 (React.js/TypeScript)
+- Next.js SSR 框架為基底，可以直接撰寫 React.js 的前端頁面並支援 SEO
+- 支援 SCSS/SASS 樣式表
+- 參照執行環境的 Node.js 版本: v20.18.0
+
+`apps/backend` 後端 (Python)
+- FastAPI 為基底的 Uvicorn app
+- 參照執行環境的 Python 版本: 3.12.4
+
 ## Preparing dependencies
 
 Shared:
